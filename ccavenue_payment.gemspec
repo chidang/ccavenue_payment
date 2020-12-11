@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email         = 'dangtanminhchi@gmail.com'
   s.description   = %q{Avoid the hassle of developing and managing your own checkout page. Use the customizable billing page provided by CCAvenue which enables you to collect billing and shipping information of the customer.}
   s.summary       = %q{Encryption & Decryption }
-  s.homepage      = '#'
+  s.homepage      = 'https://github.com/chidang/ccavenue_payment'
   s.license       = 'MIT'
   s.files         = `git ls-files`.split($/)
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
