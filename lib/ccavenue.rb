@@ -1,6 +1,6 @@
-require 'ccavenue_payment/version'
-require 'ccavenue_payment/crypto'
-require 'ccavenue_payment/config'
+require 'ccavenue/version'
+require 'ccavenue/crypto'
+require 'ccavenue/config'
 
 module Ccavenue
   class Payment
