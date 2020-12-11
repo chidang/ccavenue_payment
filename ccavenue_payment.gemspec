@@ -4,7 +4,7 @@ require 'ccavenue/version'
 
 Gem::Specification.new do |s|
   s.name = "ccavenue_payment"
-  s.version = CcavenuePayment::VERSION
+  s.version = Ccavenue::VERSION
   s.date = %q{2020-12-11}
   s.summary = %q{CCAvenue billing page (Non-Seamless)}
   s.authors       = 'Chi Dang'
