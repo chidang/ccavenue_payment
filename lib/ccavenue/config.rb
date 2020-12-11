@@ -1,4 +1,4 @@
-module CcavenuePayment
+module Ccavenue
   class Config
     class << self
       def merchant_id

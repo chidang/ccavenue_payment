@@ -1,4 +1,4 @@
-module CcavenuePayment
+module Ccavenue
   class Crypto
     attr_reader :working_key
 
