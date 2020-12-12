@@ -52,11 +52,11 @@ To test the integration login to your CCAvenue M.A.R.S account, under Settings t
 For rails application, create a configuration file(config/application.yml):
 
 ```ruby
-    CCAVENUE_MERCHANT_ID: "MERCHANT_ID"
+    CCAVENUE_MERCHANT_ID: 'MERCHANT_ID'
     CCAVENUE_ACCESS_CODE: 'ACCESS_CODE'
-    CCAVENUE_WORKING_KEY: 'C3B38A390A1A32DBE9F8FF4C4D59D662'
+    CCAVENUE_WORKING_KEY: 'WORKING_KEY'
     CCAVENUE_MODE: 'live'
-#CCAVENUE_MODE: 'test'
+    #CCAVENUE_MODE: 'test'
 ```
 
 Main functions:
