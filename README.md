@@ -1,15 +1,25 @@
 # Ccavenue Payment
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ccavenue_payment`. To experiment with that code, run `bin/console` for an interactive prompt.
+CCAvenue payment gem allows merchants to instantly collect payments from their users using various payment modes like credit cards, debit cards, cash cards, net banking etc.
 
-TODO: Delete this and the text above, and describe your gem
+## Bundler
+
+
+```ruby
+source 'https://rubygems.org'
+
+gem 'rails'
+gem 'figaro'
+gem 'ccavenue_payment'
+```
 
 ## Installation
+
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ccavenue_payment'
+    gem 'ccavenue_payment'
 ```
 
 And then execute:
@@ -22,23 +32,105 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
 
-## Development
+CCAvenue test and production environments are separate.
+Merchants need an active CCAvenue account to use the test environment and production environment. Merchants will have to log in to their CCAvenue M.A.R.S account and get the API credentials for using these environments.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+All transactions initiated by the merchant on our test environment are not processed. Test environment is strictly for testing the request and response functions.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+After successfully testing the integration, merchant can move to the production environment by changing the URL.
 
-## Contributing
+CCAvenue test URL is: https://test.ccavenue.com 
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ccavenue_payment. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/ccavenue_payment/blob/master/CODE_OF_CONDUCT.md).
+CCAvenue production URL is: https://secure.ccavenue.com
 
+To test the integration login to your CCAvenue M.A.R.S account, under Settings tab -> API Keys page; copy the following credentials:
+1. Merchant ID
+2. Access Code
+3. Working Key
+
+For rails application, create a configuration file(config/application.yml):
+
+```ruby
+    CCAVENUE_MERCHANT_ID: "MERCHANT_ID"
+    CCAVENUE_ACCESS_CODE: 'ACCESS_CODE'
+    CCAVENUE_WORKING_KEY: 'C3B38A390A1A32DBE9F8FF4C4D59D662'
+    CCAVENUE_MODE: 'live'
+#CCAVENUE_MODE: 'test'
+```
+
+Main functions:
+
+```ruby
+    # encrypted hash data
+    CcavenuePayment.encrypted_data(data)
+
+    # decrypted response string
+    CcavenuePayment.decrypted_data(params['encResponse']) 
+
+    # Ccavenue request url
+    CcavenuePayment.request_url
+```
+
+## Example Usage
+
+
+Once you've configured CcavenuePayment, you need a checkout action; my action looks like:
+
+```ruby
+  def index
+    data = {
+        order_id: 'order-id-1',
+        currency: 'INR',
+        amount: 100,
+        redirect_url: 'http://localhost:3000/payment_confirm',
+        cancel_url: 'http://localhost:3000/payment_cancel'
+    }
+    @encRequest = CcavenuePayment.encrypted_data(data)
+    @ccavenue_request_url = CcavenuePayment.request_url
+    @ccavenue_access_code = ENV.fetch('CCAVENUE_ACCESS_CODE').freeze
+  end
+```
+
+And my view looks like:
+
+```ruby
+  <form id="redirect" method="post" name="redirect" action="<%= @ccavenue_request_url %>">
+    <input type="hidden" name="encRequest" value="<%= @encRequest %>">
+    <input type="hidden" name="access_code" id="access_code" value="<%= @ccavenue_access_code %>">
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+```
+
+Action confirmation looks like this:
+
+```ruby
+  def payment_confirm
+    # parameter to response is encrypted reponse we get from CCavenue
+    @data = 'null'
+    if params['encResponse'].present?
+      @data = CcavenuePayment.decrypted_data(params['encResponse']) 
+      # Return parameters:
+      #   Auth Description: <String: Payment Failed/Success>
+      #   Checksum Verification <Bool: True/False>
+      #   Response Data: <HASH/Array: Order_id, amount etc>
+    end
+  end
+```
+
+## Notes
+
+
+All transactions initiated by the merchant on our test environment are not processed. Test environment is strictly for testing the request and response functions.
+
+For testing ccavenue you have to mail your merchant id and register site to ccavenue help team and they will activate your account for test environment. mail account : service@ccavenue.com
+
+You need provide thme the posting request URL for HDFC payment gateway. Example:
+
+```sh
+http://localhost:3000/ccavenue_bridge_pay
+```
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the CcavenuePayment project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/ccavenue_payment/blob/master/CODE_OF_CONDUCT.md).
