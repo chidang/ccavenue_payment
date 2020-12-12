@@ -6,9 +6,9 @@ module CcavenuePayment
   class << self
     # Create request object
     # === Options(Hash)
-    def encryped_data(data)
-      data.merge!({ merchant_id: Config.merchant_id }).to_query
-      crypto.encrypt(data)
+    def encrypted_data(data)
+      query_string = data.merge!({ merchant_id: Config.merchant_id }).to_query
+      crypto.encrypt(query_string)
     end
 
     def decrypted_data(encrypted_string)
