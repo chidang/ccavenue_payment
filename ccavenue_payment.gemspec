@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ccavenue/version'
 
 Gem::Specification.new do |s|
-  s.name = "ccavenue_payment"
+  s.name = "ccavenue"
   s.version = Ccavenue::VERSION
   s.date = %q{2020-12-11}
   s.summary = %q{CCAvenue billing page (Non-Seamless)}
