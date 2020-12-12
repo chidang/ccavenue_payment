@@ -1,4 +1,4 @@
-# Ccavenue Payment
+# CCAvenue Payment
 
 CCAvenue payment gem allows merchants to instantly collect payments from their users using various payment modes like credit cards, debit cards, cash cards, net banking etc.
 
@@ -55,8 +55,8 @@ For rails application, create a configuration file(config/application.yml):
     CCAVENUE_MERCHANT_ID: 'MERCHANT_ID'
     CCAVENUE_ACCESS_CODE: 'ACCESS_CODE'
     CCAVENUE_WORKING_KEY: 'WORKING_KEY'
-    CCAVENUE_MODE: 'live'
-    #CCAVENUE_MODE: 'test'
+    CCAVENUE_MODE: 'LIVE'
+    #CCAVENUE_MODE: 'TEST'
 ```
 
 Main functions:
@@ -123,9 +123,9 @@ Action confirmation looks like this:
 
 All transactions initiated by the merchant on our test environment are not processed. Test environment is strictly for testing the request and response functions.
 
-For testing ccavenue you have to mail your merchant id and register site to ccavenue help team and they will activate your account for test environment. mail account : service@ccavenue.com
+For testing CCAvenue you have to mail your merchant id and register site to CCAvenue help team and they will activate your account for test environment. mail account : service@ccavenue.com
 
-You need provide thme the posting request URL for HDFC payment gateway. Example:
+You need provide thme the posting request URL for HDFC (CCAvenue) payment gateway. Example:
 
 ```sh
 http://localhost:3000/ccavenue_bridge_pay
