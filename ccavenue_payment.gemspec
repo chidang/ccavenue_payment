@@ -15,6 +15,5 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
-
-  s.add_dependency('figaro', '~> 1.1')
+  s.add_runtime_dependency 'figaro', '~> 1.1', '>= 1.1.1'
 end 
