@@ -1,6 +1,5 @@
-module Ccavenue
-  module Payment
-    class Config
+module CcavenuePayment
+  class Config
       class << self
         def merchant_id
           ENV.fetch('CCAVENUE_MERCHANT_ID').freeze
@@ -19,5 +18,4 @@ module Ccavenue
         end
       end
     end
-  end
 end

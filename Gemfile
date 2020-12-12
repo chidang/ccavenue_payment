@@ -1,10 +1,9 @@
+source "https://rubygems.org"
+
+# Specify your gem's dependencies in ccavenue_payment.gemspec
 gemspec
 
-gem 'rake', :require => false
-gem 'figaro', '~> 1.1'
-
-group :test do
-  gem 'simplecov', :require => false
-  gem 'rspec'
-  gem 'webmock'
-end
+gem "bundler", "~> 2.2"
+gem "rake", "~> 12.0"
+gem "rspec", "~> 3.0"
+gem "figaro", "~> 1.1"

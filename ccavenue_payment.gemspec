@@ -1,19 +1,34 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ccavenue_payment/version'
+require_relative 'lib/ccavenue_payment/version'
 
-Gem::Specification.new do |s|
-  s.name = "ccavenue_payment"
-  s.version = Ccavenue::Payment::VERSION
-  s.date = %q{2020-12-11}
-  s.summary = %q{CCAvenue billing page (Non-Seamless)}
-  s.authors       = 'Chi Dang'
-  s.email         = 'dangtanminhchi@gmail.com'
-  s.description   = %q{Avoid the hassle of developing and managing your own checkout page. Use the customizable billing page provided by CCAvenue which enables you to collect billing and shipping information of the customer.}
-  s.summary       = %q{Encryption & Decryption }
-  s.homepage      = 'https://github.com/chidang/ccavenue_payment'
-  s.license       = 'MIT'
-  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
-  s.require_paths = ["lib"]
-  s.add_runtime_dependency 'figaro', '~> 1.1', '>= 1.1.1'
-end 
+Gem::Specification.new do |spec|
+  spec.name          = "ccavenue_payment"
+  spec.version       = CcavenuePayment::VERSION
+  spec.authors       = ["Dang Chi"]
+  spec.email         = ["dangtanminhchi@gmail.com"]
+
+  spec.summary       = %q{CCAvenue billing page (Non-Seamless)}
+  spec.description   = %q{Avoid the hassle of developing and managing your own checkout page. Use the customizable billing page provided by CCAvenue which enables you to collect billing and shipping information of the customer.}
+  spec.homepage      = "https://github.com/chidang/ccavenue_payment"
+  spec.license       = "MIT"
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+
+  spec.metadata["allowed_push_host"] = "http://mygemserver.com"
+
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/chidang/ccavenue_payment"
+  spec.metadata["changelog_uri"] = "https://github.com/chidang/ccavenue_payment/blob/master/CHANGELOG.md"
+
+  # Specify which files should be added to the gem when it is released.
+  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
+  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  end
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+
+  spec.add_development_dependency('bundler', '~> 2.2')
+  spec.add_development_dependency('rake', '~> 12.0')
+  spec.add_development_dependency('rspec', '~> 3.0')
+  spec.add_dependency 'figaro', '~> 1.1', '>= 1.1.1'
+end

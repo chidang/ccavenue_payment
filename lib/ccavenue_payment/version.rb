@@ -1,5 +1,3 @@
-module Ccavenue
-  module Payment
-    VERSION = "1.1.4"
-  end
+module CcavenuePayment
+  VERSION = "1.1.5"
 end
