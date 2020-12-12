@@ -13,8 +13,6 @@ Gem::Specification.new do |s|
   s.summary       = %q{Encryption & Decryption }
   s.homepage      = 'https://github.com/chidang/ccavenue_payment'
   s.license       = 'MIT'
-  s.files         = `git ls-files`.split($/)
-  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
