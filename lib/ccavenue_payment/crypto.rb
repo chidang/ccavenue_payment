@@ -10,7 +10,7 @@ module CcavenuePayment
 
     def encrypt(plain_text)
       secret_key =  [Digest::MD5.hexdigest(working_key)].pack("H*")
-      cipher = OpenSSL::Cipher::Cipher.new('aes-128-cbc')
+      cipher = OpenSSL::Cipher.new('aes-128-cbc')
       cipher.encrypt
       cipher.key = secret_key
       cipher.iv  = INIT_VECTOR
@@ -21,7 +21,7 @@ module CcavenuePayment
     def decrypt(cipher_text)
       secret_key =  [Digest::MD5.hexdigest(working_key)].pack("H*")
       encrypted_text = [cipher_text].pack("H*")
-      decipher = OpenSSL::Cipher::Cipher.new('aes-128-cbc')
+      decipher = OpenSSL::Cipher.new('aes-128-cbc')
       decipher.decrypt
       decipher.key = secret_key
       decipher.iv  = INIT_VECTOR

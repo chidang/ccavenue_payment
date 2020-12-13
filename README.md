@@ -125,7 +125,7 @@ All transactions initiated by the merchant on our test environment are not proce
 
 For testing CCAvenue you have to mail your merchant id and register site to CCAvenue help team and they will activate your account for test environment. mail account : service@ccavenue.com
 
-You need provide thme the posting request URL for HDFC (CCAvenue) payment gateway. Example:
+You need provide theme the posting request URL for HDFC (CCAvenue) payment gateway. Example:
 
 ```sh
 http://localhost:3000/ccavenue_bridge_pay

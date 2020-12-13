@@ -1,4 +1,7 @@
-require_relative 'lib/ccavenue_payment/version'
+require_relative "lib/ccavenue_payment/version"
+require_relative "lib/ccavenue_payment/config"
+require_relative "lib/ccavenue_payment/crypto"
+require_relative 'lib/ccavenue_payment'
 
 Gem::Specification.new do |spec|
   spec.name          = "ccavenue_payment"
@@ -7,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["dangtanminhchi@gmail.com"]
 
   spec.summary       = %q{CCAvenue billing page (Non-Seamless)}
-  spec.description   = %q{Avoid the hassle of developing and managing your own checkout page. Use the customizable billing page provided by CCAvenue which enables you to collect billing and shipping information of the customer.}
+  spec.description   = %q{CCCAvenue Payment Gateway - CCAvenue billing page (Non-Seamless)}
   spec.homepage      = "https://github.com/chidang/ccavenue_payment"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
