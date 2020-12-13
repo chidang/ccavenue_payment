@@ -1,6 +1,4 @@
 require_relative "lib/ccavenue_payment/version"
-require_relative "lib/ccavenue_payment/config"
-require_relative "lib/ccavenue_payment/crypto"
 require_relative 'lib/ccavenue_payment'
 
 Gem::Specification.new do |spec|

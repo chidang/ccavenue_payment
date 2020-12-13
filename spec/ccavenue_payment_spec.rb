@@ -10,7 +10,7 @@ RSpec.describe CcavenuePayment do
 
   describe 'check version number' do
     it "has a version number" do
-      expect(CcavenuePayment::VERSION).to eq "1.1.8"
+      expect(CcavenuePayment::VERSION).to eq "1.1.9"
     end
   end
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ccavenue_payment (1.1.8)
+    ccavenue_payment (1.1.9)
       figaro (~> 1.1, >= 1.1.1)
 
 GEM

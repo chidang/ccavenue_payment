@@ -1,4 +1,6 @@
 require 'uri'
+require_relative 'ccavenue_payment/config'
+require_relative 'ccavenue_payment/crypto'
 
 module CcavenuePayment
   # Create request object
